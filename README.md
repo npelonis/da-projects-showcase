@@ -14,7 +14,7 @@ This project focuses on analyzing stock market data, where I used Python to clea
 ### 📄 [Capstone Paper](https://drive.google.com/file/d/16Gb2RaXHftxXk5SxTryKgwlszJb3bbi7/view?usp=sharing)
 Click here to view the full **Capstone Paper** (PDF).
 
-### 💻 [Capstone Code](./CAPSTONE/CAPSTONE%20CODE.ipynb)
+### 💻 [Capstone Code](CAPSTONE/Capstone Code)
 Click here to view the **Capstone Code Finalized** (Jupyter Notebook).
 
 
