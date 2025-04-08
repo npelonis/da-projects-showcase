@@ -5,12 +5,21 @@ Welcome to my portfolio showcasing data analysis projects that highlight my skil
 
 ## Projects
 
-### 📊 [Stock Market Strategy Analysis](./stock-market-strategy-analysis)
+
+### 📊 Stock Market Strategy Analysis
 This project focuses on analyzing stock market data, where I used Python to clean the data, create multiple trading strategies, and backtest them. I visualized the performance of the strategies to determine their effectiveness.
 
 **Skills Used**: Python, Pandas, Matplotlib, Seaborn, Data Cleaning, Backtesting, Data Visualization
 
-### 📈 [COVID-19 Hospitalization Dashboard](./covid-hospitalization-dashboard)
+### 📄 [Capstone Paper](./CAPSTONE/Capstone%20Paper.pdf)
+Click here to view the full **Capstone Paper** (PDF).
+
+### 💻 [CAPSTONE CODE FINALIZED](./CAPSTONE/CAPSTONE%20CODE%20FINALIZED.ipynb)
+Click here to view the **Capstone Code Finalized** (Jupyter Notebook).
+
+
+
+### 📈 COVID-19 Hospitalization Dashboard
 In this project, I utilized SQL and Looker Studio (formerly Google Data Studio) to create an interactive dashboard showing key metrics related to COVID-19 hospitalizations. The dashboard enables dynamic exploration of data to track hospital capacity and trends.
 
 **Skills Used**: SQL, Looker Studio, Data Visualization, Metrics Analysis
