@@ -17,8 +17,8 @@ Click here to view the full **Capstone Paper** (PDF).
 ### [Capstone Code](/CAPSTONE/CAPSTONE%20CODE%20FINALIZED.ipynb)
 Click here to view the **Capstone Code Finalized** (Jupyter Notebook).
 
-### [Podcast Listening Prediction Time](/Podcast%20Listening%20Prediction%20Time)
-Click here to view the **Podcast Listening Prediction Time** Kaggle Project Folder.
+### [Podcast Listening Time Prediction](/Podcast%20Listening%20Time%20Prediction)
+Click here to view the **Podcast Listening Time Prediction** Kaggle Project Folder.
 
 ## About Me
 
