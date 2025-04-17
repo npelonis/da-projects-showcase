@@ -1,60 +1,51 @@
-# 🎧 Podcast Listening Time Prediction
+# Podcast Listening Time Prediction
 
-This project was created as part of the [Kaggle Playground Series - Season 5, Episode 4](https://www.kaggle.com/competitions/playground-series-s5e4) competition. The goal was to predict how long users would listen to individual podcast episodes based on various metadata like genre, sentiment, publication time, and number of ads.
+This repository contains my submission for the [Kaggle Playground Series - Season 5, Episode 4](https://www.kaggle.com/competitions/playground-series-s5e4) competition. The task was to predict user listening time for podcast episodes using metadata such as episode length, number of ads, genre, sentiment, and publication time.
 
-> 🧠 **Core takeaway:** The duration of a podcast episode is by far the strongest predictor of listening time — but clever features like _time between ads_ also add meaningful lift.
+The final model achieved a validation RMSE of **0.3968**.
 
----
+## Project Structure
 
-## 📦 Project Structure
+- `podcast-listening-prediction.ipynb` – Main notebook containing all analysis, modeling, and results.
+- `requirements.txt` – List of packages used for this project.
+- `README.md` – Project summary and documentation.
 
-- `podcast-listening-prediction-clean.ipynb` — Main notebook with EDA, feature engineering, modeling, and evaluation.
-- `requirements.txt` — List of Python libraries used.
-- `README.md` — This file :)
+Note: The dataset is not included in this repository due to Kaggle's Terms of Service. It can be accessed from the [competition data page](https://www.kaggle.com/competitions/playground-series-s5e4/data).
 
-> **Note**: Due to [Kaggle's Terms of Use](https://www.kaggle.com/terms), the dataset is **not included** in this repository.  
-> You can download it directly from the competition page [here](https://www.kaggle.com/competitions/playground-series-s5e4/data).
+## Approach
 
----
+### Data Preparation and Imputation
 
-## 🧪 Techniques Used
+- Missing values in `Episode_Length_Minutes` were imputed using the mean episode length for each podcast.
+- A new flag (`Length_Was_Imputed`) was added to capture whether a value was missing.
 
-- 🧼 **Smart Imputation**: Episode length `NaN`s were filled using the mean length of that podcast.
-- 🛠 **Feature Engineering**:
-  - `Length_Per_Ad`: Average minutes between ads (strong predictor)
-  - `Binary_Ads`: Indicator if the episode had any ads (turned out to be redundant)
-  - `Length_Was_Imputed`: Flag for whether length was originally missing
-- 🔄 **Log-Transform**: Applied to target variable (`Listening_Time_Minutes`) to handle skew.
-- 🌲 **Modeling**: XGBoost with categorical support (`enable_categorical=True`)
-- 🔍 **Permutation Importance**: Used to evaluate real contribution of each feature
+### Feature Engineering
 
----
+- `Length_Per_Ad`: Calculated as `Episode_Length_Minutes / Num_Ads` to capture pacing of ad breaks.
+- `Binary_Ads`: Indicator for whether an episode had any ads. This feature was eventually dropped due to low importance.
+- `No_Ads`: Alternate binary flag tested for interpretability.
+- Log-transformation was applied to the target (`Listening_Time_Minutes`) to address skew.
 
-## 📊 Key Results
+### Modeling
 
-| Feature              | Importance |
-|----------------------|------------|
-| `Episode_Length_Minutes` | ⭐ Dominant predictor |
-| `Length_Per_Ad`           | 👍 Second-best feature |
-| `Num_Ads`                | 💡 Still useful |
-| `Binary_Ads`             | ❌ Minimal impact |
+- The final model used XGBoost with native categorical support enabled (`enable_categorical=True`).
+- Hyperparameters were kept simple to focus on evaluating feature contributions.
+- The model was trained and validated using a standard 80/20 split.
 
-Final validation RMSE: **_your score here_**
+### Feature Importance
 
----
+Permutation importance was used to evaluate which features had the most predictive value.
 
-## ✨ What I Learned
+| Feature                   | Relative Importance |
+|---------------------------|---------------------|
+| Episode_Length_Minutes    | Highest             |
+| Length_Per_Ad             | Moderate            |
+| Num_Ads                   | Moderate            |
+| Binary_Ads                | Very Low (removed)  |
 
-- Even simple features like episode length can dominate predictive power — but derived features like ad pacing can still improve the model.
-- Not all intuitive features (like a binary ad flag) are useful when you already have more granular data.
-- SHAP can be tricky with categorical XGBoost, but permutation importance is an awesome alternative.
+## Key Insights
 
----
-
-## 📌 Setup
-
-You can recreate the environment using:
-
-```bash
-pip install -r requirements.txt
-
+- Episode length was by far the most predictive feature of listening time.
+- The pacing of ads (`Length_Per_Ad`) added meaningful value beyond just the number of ads.
+- Binary flags like `Binary_Ads` were not helpful once more informative numeric features were present.
+- SHAP was considered but not used due to compatibility issues with categorical handling in XGBoost. Permutation importance provided an effective alternative.
