@@ -21,7 +21,7 @@ Click here to view the **Capstone Code Finalized** (Jupyter Notebook).
 Click here to view the **Podcast Listening Time Prediction** Kaggle Project Folder.
 
 ### [Titanic Project](/Titanic%20Project/Titanic%20Kaggle%20Project.ipynb)
-Click here to view the **Titanic Kaggle Project** Folder. 
+Click here to view the **Titanic Kaggle Project**. 
 
 ## About Me
 
