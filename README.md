@@ -20,6 +20,9 @@ Click here to view the **Capstone Code Finalized** (Jupyter Notebook).
 ### [Podcast Listening Time Prediction](/Podcast%20Listening%20Time%20Prediction)
 Click here to view the **Podcast Listening Time Prediction** Kaggle Project Folder.
 
+### [Titanic Project](/Titanic%20Project/Titanic%20Kaggle%20Project.ipynb)
+Click here to view the **Titanic Kaggle Project** Folder. 
+
 ## About Me
 
 I’m a data analyst with a strong background in Python, SQL, and business intelligence tools. I’m passionate about transforming data into stories and visuals that drive business decisions. My projects focus on real-world and synthetic datasets and aim to deliver clear, meaningful analysis that stakeholders can easily understand.
