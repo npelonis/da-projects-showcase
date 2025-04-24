@@ -25,9 +25,9 @@ Click here to view the **Titanic Kaggle Project**.
 
 ## About Me
 
-I’m a data analyst with a strong background in Python, SQL, and business intelligence tools. I’m passionate about transforming data into stories and visuals that drive business decisions. My projects focus on real-world and synthetic datasets and aim to deliver clear, meaningful analysis that stakeholders can easily understand.
+I am a data scientist with a strong background in Python, SQL, and machine learning tools. I’m passionate about transforming data into stories and visuals that drive business decisions. My projects focus on real-world and synthetic datasets and aim to deliver clear, meaningful analysis that stakeholders can easily understand.
 
-I am currently looking for entry-level Data Analyst positions where I can contribute my skills in data analysis, visualization, and SQL to solve problems and add value to a growing organization.
+I am currently looking for entry-level Data Science and Data Analyst positions where I can contribute my skills in quantitative research, model-building, and deep analysis to solve problems and add value to a growing organization.
 
 ## Contact
 
