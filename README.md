@@ -5,6 +5,7 @@ Welcome to my portfolio showcasing data science projects that highlight my skill
 
 ## Projects
 
+#### 2024
 
 ### Stock Market Strategy Analysis
 This project focuses on analyzing stock market data, where I used Python to clean the data, create multiple trading strategies, and backtest them. I visualized the performance of the strategies to determine their effectiveness.
