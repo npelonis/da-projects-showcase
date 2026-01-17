@@ -1,7 +1,7 @@
 # da-projects-showcase
-# Data Analyst Portfolio
+# Data Science/Analytics Portfolio
 
-Welcome to my portfolio showcasing data analysis projects that highlight my skills in data cleaning, SQL, Python, data visualization, and business insights. These projects represent the type of work I am passionate about and are designed to demonstrate my ability to apply analytical techniques to real-world problems.
+Welcome to my portfolio showcasing data science projects that highlight my skills in data cleaning, SQL, Python, data visualization, and business insights. These projects represent the type of work I am passionate about and are designed to demonstrate my ability to apply analytical techniques to real-world problems.
 
 ## Projects
 
