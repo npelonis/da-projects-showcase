@@ -24,8 +24,8 @@ Using Python, each strategy was backtested on 7 years of training data (2012–2
 
 ## Contents
 
-- `Nicholas Pelonis Capstone Final Version.pdf` – Final submitted paper (includes all analysis and results)
-- `strategy_code/` – Folder containing all Python scripts and notebooks used for modeling and visualization
+- `Capstone Paper PDF Google Drive Link.md` – Final submitted paper (includes all analysis and results)
+- `CAPSTONE CODE FINALIZED.ipynb` – Folder containing all Python scripts and notebooks used for modeling and visualization
 
 ---
 
