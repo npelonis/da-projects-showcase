@@ -15,13 +15,13 @@ This project focuses on analyzing stock market data, where I used Python to clea
 ### [Capstone Paper](https://drive.google.com/file/d/16Gb2RaXHftxXk5SxTryKgwlszJb3bbi7/view?usp=sharing)
 Click here to view the full **Capstone Paper** (PDF).
 
-### [Capstone Code](/CAPSTONE/CAPSTONE%20CODE%20FINALIZED.ipynb)
+### [Capstone Code](2024/CAPSTONE/CAPSTONE%20CODE%20FINALIZED.ipynb)
 Click here to view the **Capstone Code Finalized** (Jupyter Notebook).
 
-### [Podcast Listening Time Prediction](/Podcast%20Listening%20Time%20Prediction)
+### [Podcast Listening Time Prediction](2024/Podcast%20Listening%20Time%20Prediction)
 Click here to view the **Podcast Listening Time Prediction** Kaggle Project Folder.
 
-### [Titanic Project](/Titanic%20Project/Titanic%20Kaggle%20Project.ipynb)
+### [Titanic Project](2024/Titanic%20Project/Titanic%20Kaggle%20Project.ipynb)
 Click here to view the **Titanic Kaggle Project**. 
 
 ## About Me
