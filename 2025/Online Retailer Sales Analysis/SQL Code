@@ -1,1 +1,185 @@
+CREATE TABLE table_0910 (
+	invoice INT,
+	stockcode VARCHAR(12),
+	description VARCHAR(50),
+	quantity INT,
+	invoicedate VARCHAR(20),
+	price NUMERIC(5,2),
+	customer_id INT,
+	country VARCHAR(30)
+);
 
+CREATE TABLE table_0910_staging (
+    invoice TEXT,
+    stockcode TEXT,
+    description TEXT,
+    quantity TEXT,
+    invoicedate TEXT,
+    price TEXT,
+    customer_id TEXT,
+    country TEXT
+);
+
+ALTER TABLE table_0910
+ALTER COLUMN invoice TYPE VARCHAR(50) USING invoice::VARCHAR;
+
+ALTER TABLE table_0910
+ALTER COLUMN description TYPE TEXT;
+
+ALTER TABLE table_0910
+ALTER COLUMN invoicedate TYPE TIMESTAMP
+USING TO_TIMESTAMP(invoicedate, 'MM/DD/YYYY HH24:MI');
+
+ALTER TABLE table_0910
+ALTER COLUMN price TYPE NUMERIC(10,2);
+
+ALTER TABLE table_0910
+ALTER COLUMN stockcode TYPE VARCHAR(20);
+
+ALTER TABLE table_0910
+ALTER COLUMN country TYPE VARCHAR(50);
+
+INSERT INTO table_0910 (
+	invoice,
+	stockcode,
+	description,
+	quantity,
+	invoicedate,
+	price,
+	customer_id,
+	country
+)
+SELECT
+	invoice,
+	stockcode,
+	description,
+	NULLIF(quantity,'')::INT,
+	TO_TIMESTAMP(invoicedate, 'MM/DD/YY HH24:MI'),
+	NULLIF(price,'')::NUMERIC(10,2),
+	NULLIF(customer_id,'')::INT,
+	country
+FROM table_0910_staging;
+	
+## At this point, I've made the first table, need to make one for the second year and then combine them. 
+
+CREATE TABLE table_1011 (
+	invoice VARCHAR(50),
+	stockcode VARCHAR(20),
+	description TEXT,
+	quantity INT,
+	invoicedate TIMESTAMP,
+	price NUMERIC(10,2),
+	customer_id INT,
+	country VARCHAR(50)
+);
+
+## For this one, the table was created correctly right away so I didn't need to adjust the values in a second table first. 
+
+CREATE TABLE combined_table AS
+SELECT * FROM table_0910
+UNION ALL
+SELECT * FROM table_1011
+ORDER BY invoicedate ASC;
+
+## The above created a table with all data from both tables
+
+## Now, since the goal here is to identify trends in customer data, I will check to see rows with customer id's and rows where customer id is null. 
+
+SELECT *
+FROM table_0910
+WHERE customer_id IS NULL;
+
+## There are 243007 rows with no customer id, leaving just about 800000 with customer id's. 
+
+# First, I am going to do some exploratory queries and visualize different time series metrics. 
+
+# Monthly Revenue:
+
+SELECT
+EXTRACT(MONTH FROM invoicedate) as month,
+EXTRACT(YEAR FROM invoicedate) as year,
+SUM(price*quantity) as monthly_revenue
+FROM
+combined_table
+GROUP BY 2, 1
+ORDER BY 2, 1;
+
+# Graph of revenue shows seasonal changes, with peaks in November, dips in January. Expected.
+
+# Top 10 highest revenue-generating countries:
+
+SELECT
+country,
+SUM(price*quantity) as total_revenue
+FROM
+combined_table
+GROUP BY
+country
+ORDER BY
+SUM(price*quantity) DESC
+LIMIT 10
+
+# Top 10 highest revenue-generating countries including percent of total revenue:
+
+SELECT
+country,
+total_revenue,
+((total_revenue / SUM(total_revenue) OVER ())*100) as pct_total_revenue
+FROM (
+	SELECT
+	country,
+	SUM(price*quantity) as total_revenue
+	FROM
+	combined_table
+	GROUP BY country
+)
+ORDER BY total_revenue DESC
+LIMIT 10;
+
+This reveals that the UK is where nearly 85 percent of the total revenue over the dataset is from. 
+
+
+# Next, I will turn to product specific analysis. First off, since the table only shows stockcode and item description, I will check to ensure that each stockcode applies to only one item description. 
+
+SELECT stockcode, COUNT(DISTINCT description) as num_descriptions
+FROM combined_table
+GROUP BY stockcode
+HAVING COUNT(DISTINCT description) > 1
+
+# Lots of the stockcodes are showing multiple descriptions. I am going to check if this is due to nulls. 
+
+SELECT DISTINCT stockcode, description as num_descriptions
+FROM combined_table
+
+This shows null values at a glance, I will now look into whether there are any stockcodes that ONLY have null values, and also whether any stockcodes are attached to more than one non-null description. If the answers to both of these are no, then I can proceed under the assumption that the missing descriptions do not override the other rows with descriptions on the same stockcodes.
+
+# Check how many and which stock codes have only null:
+SELECT stockcode
+FROM combined_table
+GROUP BY stockcode
+HAVING COUNT(description) = 0
+
+355 only have nulls. 
+
+SELECT stockcode
+FROM combined_table
+GROUP BY stockcode
+HAVING COUNT(description) > 0
+
+While 4,950 have at least one description that is not null. 
+
+This means less than 10% of the stockcodes have only nulls. I will quickly check if these generated any substantial revenues, to flag for future research (Since this is a project with a singular dataset, I will not be able to find more information on these, but on a work project this would be doable). 
+
+SELECT
+    stockcode,
+    SUM(price*quantity) AS revenue,
+    SUM(price*quantity) / (SELECT SUM(price*quantity) FROM combined_table) * 100 AS pct_of_company_revenue
+FROM combined_table
+WHERE description IS NULL
+GROUP BY stockcode
+ORDER BY revenue DESC;
+
+This reveals that every time there is no description, revenue is 0. This means we can drop these rows. 
+
+
+ 
