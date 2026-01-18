@@ -5,6 +5,13 @@ Welcome to my portfolio showcasing data science projects that highlight my skill
 
 # Projects
 
+## 2025
+
+### Since working full-time since shortly after graduation, I have developed my interest in data science towards product analytics. I want to calculate metrics, run A/B and hypothesis tests, and use my knowledge of SQL, Python, and statistics to determine the best course of action for companies creating products. My focus for this year will be on projects that allow me to display my abilities in this area and help me develop my skills further. 
+
+### [Online Retailer Sales Analysis (In Progress)](2025/Online%20Retailer%20Sales%20Analysis)
+Click here to view the **Online Retailer Sales Analysis** project folder.
+
 ## 2024
 
 ### Stock Market Strategy Analysis
