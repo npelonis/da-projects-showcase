@@ -1,6 +1,6 @@
 # Podcast Listening Behavior & Engagement Analysis
 
-This project analyzes podcast episode metadata to understand and predict user listening time, with a focus on identifying which content and ad-related factors most strongly influence engagement. The goal is to surface actionable insights into how structural decisions (episode length, ad pacing, timing) impact listening behavior.
+This project analyzes podcast episode metadata to understand and predict user listening time, with a focus on identifying which content and ad-related factors most strongly influence listener engagement. The goal is to surface actionable insights into how structural decisions (episode length, ad pacing, timing) impact listening behavior.
 
 The analysis was conducted using a dataset from the Kaggle Playground Series (Season 5, Episode 4), which simulates real-world podcast consumption data.
 
@@ -68,5 +68,5 @@ Permutation importance was used to evaluate which features had the most predicti
 This analysis demonstrates how viewer engagement can be quantified and explained using readily available metadata. The findings have direct relevance to:
 - Content strategy (episode length optimization)
 - Ad experience design (pacing vs. volume)
-- Engagemenet forecasting and experimentation
+- Engagement forecasting and experimentation
 The project reflects how viewer insights teams can move beyond raw metrics to uncover behavioral patterns that inform product and content decisions.
