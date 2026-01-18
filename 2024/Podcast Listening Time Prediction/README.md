@@ -1,8 +1,21 @@
-# Podcast Listening Time Prediction
+# Podcast Listening Behavior & Engagement Analysis
 
-This repository contains my submission for the [Kaggle Playground Series - Season 5, Episode 4](https://www.kaggle.com/competitions/playground-series-s5e4) competition. The task was to predict user listening time for podcast episodes using metadata such as episode length, number of ads, genre, sentiment, and publication time.
+This project analyzes podcast episode metadata to understand and predict user listening time, with a focus on identifying which content and ad-related factors most strongly influence engagement. The goal is to surface actionable insights into how structural decisions (episode length, ad pacing, timing) impact listening behavior.
 
-The final model achieved a validation RMSE of **0.3968**.
+The analysis was conducted using a dataset from the Kaggle Playground Series (Season 5, Episode 4), which simulates real-world podcast consumption data.
+
+## Business Question
+
+How do episode structure and ad placement relate to listener engagement, and which factors are most predictive of how long users listen to podcast episodes?
+
+## Dataset Overview
+
+The dataset includes episode-level metadata such as:
+- Episode length
+- Number of ads
+- Genre and sentiment
+- Publication timing
+- Total listening time per episode (target)
 
 ## Project Structure
 
@@ -12,7 +25,7 @@ The final model achieved a validation RMSE of **0.3968**.
 
 Note: The dataset is not included in this repository due to Kaggle's Terms of Service. It can be accessed from the [competition data page](https://www.kaggle.com/competitions/playground-series-s5e4/data).
 
-## Approach
+## Analytical Approach
 
 ### Data Preparation and Imputation
 
@@ -49,3 +62,11 @@ Permutation importance was used to evaluate which features had the most predicti
 - The pacing of ads (`Length_Per_Ad`) added meaningful value beyond just the number of ads.
 - Binary flags like `Binary_Ads` were not helpful once more informative numeric features were present.
 - SHAP was considered but not used due to compatibility issues with categorical handling in XGBoost. Permutation importance provided an effective alternative.
+
+## Impact & Relevance
+
+This analysis demonstrates how viewer engagement can be quantified and explained using readily available metadata. The findings have direct relevance to:
+- Content strategy (episode length optimization)
+- Ad experience design (pacing vs. volume)
+- Engagemenet forecasting and experimentation
+The project reflects how viewer insights teams can move beyond raw metrics to uncover behavioral patterns that inform product and content decisions.
